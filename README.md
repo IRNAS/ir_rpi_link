@@ -6,7 +6,7 @@ A common modulation scheme for IR communication is something called 38kHz modula
 
 
 ### Koruza IR Link
-Koruza IR link is a working prototype that will be used in wireless optical system [KORUZA][koruzaLink1]. It represents a system that is capable of establishing infrared communication over distances to 200 m. This IR link uses [LIRC][lircLink1] (Linux Infrared Communication) with Raspberry Pi and additional hardware for IR transmitter (High Power Infrared Emitting Diode) and IR receiver.
+Koruza IR link is a working prototype that will be used in wireless optical system [KORUZA][koruzaLink1]. It represents a system that is capable of establishing infrared communication over distances to 200 m. This IR link uses [LIRC][lircLink1] (Linux Infrared Control) with Raspberry Pi and additional hardware for IR transmitter (High Power Infrared Emitting Diode) and IR receiver.
 
 ### LIRC
 [LIRC][lircLink1] is a package that allows you to decode infrared signals of many (but not all) commonly used remote controls. LIRC runs as a daemon that will decode IR signals received by the device drivers and provide the information on a socket. 
@@ -50,12 +50,23 @@ dtoverlay=lirc-rpi,gpio_in_pin=18,gpio_out_pin=17,gpio_in_pull=up
 All configurantion files can be found in folder [**config_files**][configFilesLink1] of this repository.
 
 
+##### Resources
+[lirc][lircLink1] - LIRC home page
 
+[Setting Up LIRC on the RaspberryPi][link1]
+
+[How to Control the GPIO on a Raspberry Pi with an IR Remote][link2]
+
+[Read/emulate remotes with Arduino and Raspberry Pi][link3]
 
 
 
   [koruzaLink1]: <http://koruza.net/>
   [lircLink1]: <http://www.lirc.org/>
   [configFilesLink1]: <https://github.com/VojislavM/ir_rpi_link/tree/master/config_files>  
+  [link1]: <http://alexba.in/blog/2013/01/06/setting-up-lirc-on-the-raspberrypi/>
+  [link2]: <http://ozzmaker.com/how-to-control-the-gpio-on-a-raspberry-pi-with-an-ir-remote/>
+  [link3]: <http://www.instructables.com/id/How-To-Useemulate-remotes-with-Arduino-and-Raspber/?ALLSTEPS>
+  
   
 
