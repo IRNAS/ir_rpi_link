@@ -1,0 +1,56 @@
+#include <lirc/lirc_client.h>
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+#include <time.h>
+
+int main(int argc, char *argv[])
+{
+        struct lirc_config *config;
+	char *code;
+        char *c;
+//Initiate LIRC. Exit on failure
+        if(lirc_init("lirc",1)==-1)
+                exit(EXIT_FAILURE);
+
+//Read the default LIRC config at /etc/lirc/lircd.conf  This is the config for your remote.
+        if(lirc_readconfig(NULL,&config,NULL)==0)
+        {
+                //Do stuff while LIRC socket is open  0=open  -1=closed.
+                while(lirc_nextcode(&code)==0)
+                {
+                        //If code = NULL, meaning nothing was returned from LIRC socket,
+                        //then skip lines below and start while loop again.
+                        if(code==NULL) continue;{
+                        	//Check to see if the string "KEY_1" appears anywhere within the string 'code'.
+                                if(strstr (code,"KEY_1")){
+                        		printf("MATCH on KEY_1\n");
+                                }
+                                else if(strstr (code,"KEY_2")){
+                                        printf("MATCH on KEY_2\n");
+                                }
+                                else if(strstr (code,"KEY_3")){
+                                        printf("MATCH on KEY_3\n");
+                                }
+				else if(strstr (code,"KEY_4")){
+					printf("MATCH on KEY_4\n");
+				}
+				else if(strstr (code,"KEY_5")){
+					printf("MATCH on KEY_5\n");
+				}
+				else{
+					printf("NO MATCH");
+				}
+                	}
+                	//Need to free up code before the next loop
+                	free(code);
+        	}
+                //Frees the data structures associated with config.
+                lirc_freeconfig(config);
+        }
+        //lirc_deinit() closes the connection to lircd and does some internal clean-up stuff.
+        lirc_deinit();
+        exit(EXIT_SUCCESS);
+}
+ 
+
