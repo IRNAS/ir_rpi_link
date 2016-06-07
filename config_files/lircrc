@@ -1,0 +1,24 @@
+begin
+  button = KEY_1     # what button is pressed on the remote
+  prog = myprogram   # program to handle this command
+  config = one       # configs are given to program as list
+end
+begin
+  button = KEY_2
+  prog = myprogram
+  config = two
+end
+begin
+  button = KEY_3
+  prog = myprogram
+  config = three
+end
+begin
+  button = KEY_4
+  prog = mypogram
+  config = four
+end
+begin
+  button = KEY_5
+  prog = myprogram
+  config = five
